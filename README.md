@@ -1,11 +1,6 @@
 # Introduction.
 
-- backend task provide the following services for the user & admin.
-
-1. login
-1. logout
-1. CRUD admin
-1. CRUD customer
+- This mini project aims to design a set of APIs that manage transactions of a company.Managing transactions include: creating transactions, viewing transactions, recording payments and generating reports..
 
 
 ## Perquisites
