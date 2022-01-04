@@ -20,5 +20,8 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
 
     Route::group(['middleware' => ['auth:sanctum'], ['admin.guard']], function () {
         Route::post('logout', 'App\Http\Controllers\Admin\Auth\LogoutController@logout')->name('admin.logout');
+        Route::apiResources([
+            'users'     => 'App\Http\Controllers\Admin\UserController',
+        ]);
     });
 });
