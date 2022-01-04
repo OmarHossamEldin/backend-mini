@@ -16,7 +16,7 @@ class AuthRepository
     {
         if (Auth::attempt($validatedData, request()->remember) && Auth::user()->is_admin === true) {
             $user = Auth::user();
-            $user->token = $user->createToken('token')->plainTextToken;
+            $user->token = $user->createToken('admin-token')->plainTextToken;
         } else {
             $user = [];
         }
