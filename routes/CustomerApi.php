@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => ['cors', 'json.response']], function () {
     Route::group(['middleware' => 'guest'], function () {
         Route::post('login', 'App\Http\Controllers\Customer\Auth\LoginController@login')->name('customer.login');
+        
+        Route::post('register', 'App\Http\Controllers\Customer\Auth\RegisterController@register')->name('customer.register');
     });
 
     Route::group(['middleware' => ['auth:sanctum']], function () {
