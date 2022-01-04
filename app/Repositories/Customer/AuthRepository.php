@@ -17,7 +17,7 @@ class AuthRepository
     {
         if (Auth::attempt($validatedData, request()->remember)) {
             $user = Auth::user();
-            $user->token = $user->createToken('token')->plainTextToken;
+            $user->token = $user->createToken('customer-token')->plainTextToken;
         } else {
             $user = [];
         }
