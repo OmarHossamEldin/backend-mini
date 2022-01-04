@@ -22,6 +22,7 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
         Route::post('logout', 'App\Http\Controllers\Admin\Auth\LogoutController@logout')->name('admin.logout');
         Route::apiResources([
             'users'     => 'App\Http\Controllers\Admin\UserController',
+            'categories' => 'App\Http\Controllers\Admin\CategoryController',
         ]);
     });
 });
