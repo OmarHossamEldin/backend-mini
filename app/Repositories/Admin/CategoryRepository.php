@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Repositories;
+namespace App\Repositories\Admin;
 
-use App\Interfaces\Crud;
 use App\Models\Category;
 
-class CategoryRepository implements Crud
+class CategoryRepository 
 {
     
     /**
@@ -27,8 +26,6 @@ class CategoryRepository implements Crud
      */
     public function create(array $validatedData): object
     {
-        $user = auth('api')->user();
-        $validatedData['user_id'] = $user->id;
         $category = Category::create($validatedData);
         return $category;
     }
