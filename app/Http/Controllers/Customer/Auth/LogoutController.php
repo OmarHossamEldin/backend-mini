@@ -15,7 +15,7 @@ class LogoutController extends Controller
      */
     public function logout(AuthRepository $authRepository)
     {
-        $user = auth('api')->user();
+        $user = auth()->user();
 
         return $authRepository->signOut($user) ? JsonResponse::response(message: Lang::get('auth.logout'), statusCode: 200) :
             JsonResponse::response(message: Lang::get('db.failed'), statusCode: 500);

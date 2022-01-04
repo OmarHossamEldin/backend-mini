@@ -59,9 +59,4 @@ class UserRepository
         return true;
     }
 
-    public function userFeedBackRequest(): object
-    {
-        $user = auth('api')->user()->load('feedbacks');
-        return $user;
-    }
 }
