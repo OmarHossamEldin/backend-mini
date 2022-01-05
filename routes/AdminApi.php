@@ -23,6 +23,8 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
         Route::apiResources([
             'users'     => 'App\Http\Controllers\Admin\UserController',
             'categories' => 'App\Http\Controllers\Admin\CategoryController',
+            'transactions' => 'App\Http\Controllers\Admin\TransactionController',
+            'record-payments' => 'App\Http\Controllers\Admin\RecordPaymentController'
         ]);
     });
 });

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTransactionPaymentsTable extends Migration
+class CreateRecordPaymentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateTransactionPaymentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('transaction_payments', function (Blueprint $table) {
+        Schema::create('record_payments', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('transaction_id')->constrained('transactions');
             $table->double('amount', 5);
-            $table->boolean('paid_on')->default(0);
+            $table->date('paid_on');
             $table->longText('details')->nullable();
             $table->timestamps();
         });
