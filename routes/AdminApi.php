@@ -15,16 +15,20 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['cors', 'json.response']], function () {
     Route::group(['middleware' => 'guest'], function () {
+
         Route::post('login', 'App\Http\Controllers\Admin\Auth\LoginController@login')->name('admin.login');
     });
 
     Route::group(['middleware' => ['auth:sanctum'], ['admin.guard']], function () {
         Route::post('logout', 'App\Http\Controllers\Admin\Auth\LogoutController@logout')->name('admin.logout');
+
         Route::apiResources([
             'users'     => 'App\Http\Controllers\Admin\UserController',
             'categories' => 'App\Http\Controllers\Admin\CategoryController',
             'transactions' => 'App\Http\Controllers\Admin\TransactionController',
             'record-payments' => 'App\Http\Controllers\Admin\RecordPaymentController'
         ]);
+
+        Route::post('reports', 'App\Http\Controllers\Admin\ReportController@generate_report')->name('report.generate');
     });
 });
