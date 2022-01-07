@@ -21,6 +21,6 @@ class LoginController extends Controller
         $user = $authRepository->signIn($request->validated());
 
         return $user ? JsonResponse::response(message: Lang::get('auth.success'), data: ['user' => $user], statusCode: 201) :
-            JsonResponse::response(errors: [Lang::get('auth.failed')], data: ['user' => []], statusCode: 200);
+            JsonResponse::response(errors: [Lang::get('auth.failed')], statusCode: 200);
     }
 }

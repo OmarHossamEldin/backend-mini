@@ -74,6 +74,6 @@ class CategoryController extends Controller
     public function destroy(Category $category, CategoryRepository $categoryRepository)
     {
         $result = $categoryRepository->delete($category);
-        return $result ? JsonResponse::response(message: Lang::get('db.success'), data: [], statusCode: 200) : 'error';
+        return $result ? JsonResponse::response(message: Lang::get('db.success'), statusCode: 200) : 'error';
     }
 }

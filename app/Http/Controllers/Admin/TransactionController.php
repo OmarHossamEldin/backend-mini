@@ -77,6 +77,6 @@ class TransactionController extends Controller
     public function destroy(Transaction $transaction, TransactionRepository $transactionRepository)
     {
         $result = $transactionRepository->delete($transaction);
-        return $result ? JsonResponse::response(message: Lang::get('db.success'), data: [], statusCode: 200) : 'error';
+        return $result ? JsonResponse::response(message: Lang::get('db.success'), statusCode: 200) : 'error';
     }
 }

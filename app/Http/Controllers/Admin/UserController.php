@@ -72,6 +72,6 @@ class UserController extends Controller
     public function destroy(User $user, UserRepository $userRepository)
     {
         $result = $userRepository->delete($user);
-        return $result ? JsonResponse::response(message: Lang::get('db.success'), data: [], statusCode: 200) : 'error';
+        return $result ? JsonResponse::response(message: Lang::get('db.success'), statusCode: 200) : 'error';
     }
 }

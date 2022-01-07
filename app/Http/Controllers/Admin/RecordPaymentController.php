@@ -77,6 +77,6 @@ class RecordPaymentController extends Controller
     public function destroy(RecordPayment $recordPayment, RecordPaymentRepository $recordPaymentRepository)
     {
         $result = $recordPaymentRepository->delete($recordPayment);
-        return $result ? JsonResponse::response(message: Lang::get('db.success'), data: [], statusCode: 200) : 'error';
+        return $result ? JsonResponse::response(message: Lang::get('db.success'), statusCode: 200) : 'error';
     }
 }
