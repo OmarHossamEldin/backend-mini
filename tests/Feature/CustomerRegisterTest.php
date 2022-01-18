@@ -8,6 +8,7 @@ use Tests\TestCase;
 
 class CustomerRegisterTest extends TestCase
 {
+    use WithFaker;
     /** @test */
     public function customer_register_fail()
     {
@@ -31,18 +32,39 @@ class CustomerRegisterTest extends TestCase
     }
 
     /** @test */
-    public function customer_register_success()
+    public function customer_register_fail_unique_email()
     {
         $customer = [
-            "name" => 'omar123',
-            "email" => 'test123@test123.com',
+            "name" => 'test',
+            "email" => 'test@test.com',
             "password" => 'password',
             "password_confirmation" => 'password'
         ];
         $response = $this->post('/api/customer/register', $customer);
 
+        $response->assertStatus(422)->assertJson([
+            "message" => "The given data was invalid.",
+            "errors" => [
+                "email" => [
+                    "The email has already been taken."
+                ]
+            ]
+        ]);
+    }
+
+    /** @test */
+    public function customer_register_success()
+    {
+        $customer = [
+            "name" => $this->faker->name('male'),
+            "email" =>  $this->faker->unique()->safeEmail,
+            "password" => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password,
+            "password_confirmation" => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi'
+        ];
+        $response = $this->post('/api/customer/register', $customer);
+
         $response->assertStatus(201)->assertJson([
-            "message" => "your operation has been submitted successfully"
+            'message' => 'your operation has been submitted successfully'
         ]);
     }
 }

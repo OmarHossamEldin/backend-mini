@@ -29,13 +29,17 @@ class TransactionController extends Controller
      *
      * @param StoreRequest $request
      * @param TransactionRepository $transactionRepository
+     * @param RecordPaymentRepository $recordPaymentRepository
      * @return JsonResponse
      */
-    public function store(StoreRequest $request, TransactionRepository $transactionRepository)
-    {
-        $transaction = $transactionRepository->create($request->validated());
-
-        return JsonResponse::response(message: Lang::get('db.success'), data: ['transaction' => $transaction], statusCode: 201);
+    public function store(
+        StoreRequest $request,
+        TransactionRepository $transactionRepository
+    ) {
+        $validatedData = $request->validated();
+        $transaction = $transactionRepository->create($validatedData);
+        $message = ($validatedData['paid'] <=> $validatedData['amount']) === 0 ? Lang::get('transaction.paid') : Lang::get('transaction.overdue');
+        return JsonResponse::response(message: $message, data: [$request->validated(), 'transaction' => $transaction], statusCode: 201);
     }
 
     /**

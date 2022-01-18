@@ -31,7 +31,7 @@ class StoreRequest extends FormRequest
             'due_on' => 'required|date',
             'vat' => 'required|numeric',
             'is_vat_inclusive' => 'required|numeric',
-            'status' => 'required|in:paid,outstanding,overdue'
+            'paid'=> 'sometimes|required|numeric|min:0'
         ];
     }
 }
