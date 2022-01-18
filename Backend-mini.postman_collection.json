@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "f1ed0b8d-4259-483f-8c84-e568f477c192",
+		"_postman_id": "965161c0-129f-4f4f-b21c-01c175fbbda7",
 		"name": "Backend-mini",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -477,7 +477,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"category_id\": 1,\r\n    \"subcategory_id\": 2,\r\n    \"amount\": 54,\r\n    \"customer_id\": 2,\r\n    \"due_on\": \"2022-1-4\",\r\n    \"vat\": 50.00,\r\n    \"is_vat_inclusive\": 0.2,\r\n    \"status\": \"paid\"\r\n}",
+									"raw": "{\r\n    \"category_id\": 1,\r\n    \"subcategory_id\": 2,\r\n    \"amount\": 100,\r\n    \"customer_id\": 2,\r\n    \"due_on\": \"2022-1-4\",\r\n    \"vat\": 50.00,\r\n    \"is_vat_inclusive\": 0.2,\r\n    \"status\": \"paid\",\r\n    \"paid\":100\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
