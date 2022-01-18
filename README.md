@@ -7,7 +7,17 @@
  
  - PHP8
  - composer
+## Getting started
 
+- exec the following into your terminal
+    1. cd into project directory
+    1. cp .env.example .env
+    1. composer install
+    1. php artisan key:generate
+    1. php artisan migrate --seed
+    1. php artisan test
+    1. php artisan serve 
+    
 ## Built With
 
 * [Laravel 8.x](https://laravel.com/docs/8.x) - The web framework 

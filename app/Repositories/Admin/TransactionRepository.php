@@ -3,6 +3,7 @@
 namespace App\Repositories\Admin;
 
 use App\Models\Transaction;
+use App\Models\RecordPayment;
 
 class TransactionRepository
 {
@@ -25,7 +26,16 @@ class TransactionRepository
      */
     public function create(array $validatedData): object
     {
+        $validatedData['status'] = ($validatedData['paid'] <=> $validatedData['amount']) === 0 ? 'paid' : 'overdue';
         $transaction = Transaction::create($validatedData);
+        if ($validatedData['paid'] > 0) {
+            $validatedData = [
+                'transaction_id' => $transaction->id,
+                "amount" => $validatedData['paid'],
+                "paid_on" => date('Y-m-d')
+            ];
+            RecordPayment::create($validatedData);
+        }
         return $transaction;
     }
 
